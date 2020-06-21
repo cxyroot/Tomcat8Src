@@ -106,7 +106,7 @@ final class StandardHostValve extends ValveBase {
     @Override
     public final void invoke(Request request, Response response)
         throws IOException, ServletException {
-
+        System.out.println("org.apache.catalina.core.StandardHostValve.invoke");
         // Select the Context to be used for this Request
         Context context = request.getContext();
         if (context == null) {

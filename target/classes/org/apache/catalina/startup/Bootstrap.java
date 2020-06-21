@@ -367,7 +367,6 @@ public final class Bootstrap {
         System.out.println(catalinaDaemon.getClass());
         Method method = catalinaDaemon.getClass().getMethod("start", (Class [] )null);
         method.invoke(catalinaDaemon, (Object [])null);
-
     }
 
 

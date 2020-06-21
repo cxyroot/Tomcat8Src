@@ -1,79 +1,18 @@
-## Welcome to Apache Tomcat!
-
-### What Is It?
-
-The Apache Tomcat® software is an open source implementation of the Java
-Servlet, JavaServer Pages, Java Expression Language and Java WebSocket
-technologies. The Java Servlet, JavaServer Pages, Java Expression Language and
-Java WebSocket specifications are developed under the
-[Java Community Process](https://jcp.org/en/introduction/overview).
-
-The Apache Tomcat software is developed in an open and participatory
-environment and released under the
-[Apache License version 2](https://www.apache.org/licenses/). The Apache Tomcat
-project is intended to be a collaboration of the best-of-breed developers from
-around the world. We invite you to participate in this open development
-project. To learn more about getting involved,
-[click here](https://tomcat.apache.org/getinvolved.html) or keep reading.
-
-Apache Tomcat software powers numerous large-scale, mission-critical web
-applications across a diverse range of industries and organizations. Some of
-these users and their stories are listed on the
-[PoweredBy wiki page](https://wiki.apache.org/tomcat/PoweredBy).
-
-Apache Tomcat, Tomcat, Apache, the Apache feather, and the Apache Tomcat
-project logo are trademarks of the Apache Software Foundation.
-
-### Get It
-
-For every major Tomcat version there is one download page containing
-links to the latest binary and source code downloads, but also
-links for browsing the download directories and archives:
-- [Tomcat 9](https://tomcat.apache.org/download-90.cgi)
-- [Tomcat 8](https://tomcat.apache.org/download-80.cgi)
-- [Tomcat 7](https://tomcat.apache.org/download-70.cgi)
-
-To facilitate choosing the right major Tomcat version one, we have provided a
-[version overview page](https://tomcat.apache.org/whichversion.html).
-
-### Documentation
-
-The documentation available as of the date of this release is
-included in the docs webapp which ships with tomcat. You can access that webapp
-by starting tomcat and visiting http://localhost:8080/docs/ in your browser.
-The most up-to-date documentation for each version can be found at:
-- [Tomcat 9](https://tomcat.apache.org/tomcat-9.0-doc/)
-- [Tomcat 8](https://tomcat.apache.org/tomcat-8.5-doc/)
-- [Tomcat 7](https://tomcat.apache.org/tomcat-7.0-doc/)
-
-### Installation
-
-Please see [RUNNING.txt](RUNNING.txt) for more info.
-
-### Licensing
-
-Please see [LICENSE](LICENSE) for more info.
-
-### Support and Mailing List Information
-
-* Free community support is available through the
-[tomcat-users](https://tomcat.apache.org/lists.html#tomcat-users) email list and
-a dedicated [IRC channel](https://tomcat.apache.org/irc.html) (#tomcat on
-Freenode).
-
-* If you want freely available support for running Apache Tomcat, please see the
-resources page [here](https://tomcat.apache.org/findhelp.html).
-
-* If you want to be informed about new code releases, bug fixes,
-security fixes, general news and information about Apache Tomcat, please
-subscribe to the
-[tomcat-announce](https://tomcat.apache.org/lists.html#tomcat-announce) email
-list.
-
-* If you have a concrete bug report for Apache Tomcat, please see the
-instructions for reporting a bug
-[here](https://tomcat.apache.org/bugreport.html).
-
-### Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for more info.
+tomcat8 源码代码阅读笔记 作为一个发展有十多年的，广为使用的成熟的应用容器，tomcat还是有很多值得学习的。
+我随便抛出一些技术点，看看这些问题你是否思考过？
+1）如何让一个java程序成为一个类似于daemon这样的进程，在当前终端关闭后不退出，不同平台靠什么来解决这个问题？
+2）如何处理系统信号？
+3）如何做监控？是否使用jmx?
+4）应用是怎么部署的？
+servlet3有什么不同？
+5）多个应用之间是怎么相互隔离的？
+tomcat的classloader机制是怎样的？
+6）servlet3和servlet3.1 新增的异步和非阻塞特性有什么用？
+7）怎么预防应用可能导致的内存泄露？
+8）关闭服务的时候，应该先暂停/关闭什么，后关闭什么？
+9）tomcat的扩展机制是通过什么方式提供给开发者的？
+10）BIO/NIO/APR 三种connector实现上的优劣是什么？
+11）jsp文件是怎么编译和执行的？
+12）HTTP协议本身就够喝一壶，tomcat7/8里支持的websocket/spdy等新特性本身就挺复杂的
+tomcat有四五十万行代码，你没有目的的去看会比较耗费精力，
+最好先了解大致结构，和运行流程，结合自己想要在某个点的实际需求去深入了解

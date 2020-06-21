@@ -342,9 +342,9 @@ public class CoyoteAdapter implements Adapter {
                 System.out.println("请求处理完成。。。。");
                 request.setAsyncSupported(connector.getService().getContainer().getPipeline().isAsyncSupported());
                 // Calling the container
-                System.out.println("请求处理完成。。。。");
                 //StandardEngineValve
                 connector.getService().getContainer().getPipeline().getFirst().invoke(request, response);
+                System.out.println("请求处理完成。。。。");
             }
             if (request.isAsync()) {
                 async = true;
