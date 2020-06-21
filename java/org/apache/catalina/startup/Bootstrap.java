@@ -43,6 +43,22 @@ import java.util.regex.Pattern;
  * 	因此它会调用连接器和 Engine 的 start 方法。
  */
 /**
+
+ * Catalina的引导加载程序。这个应用程序构造一个类加载器
+ *
+ * *用于加载Catalina内部类（通过累积所有
+ *
+ * *在“服务器”目录下找到的JAR文件catalina.home网站）和
+ *
+ * *开始容器的常规执行。目的
+ *
+ * *迂回方法是保持Catalina内部类（以及
+ *
+ * *它们所依赖的其他类（如XML解析器）不在系统中
+ *
+ * *类路径，因此对应用程序级类不可见。
+ */
+/**
  * Bootstrap loader for Catalina.  This application constructs a class loader
  * for use in loading the Catalina internal classes (by accumulating all of the
  * JAR files found in the "server" directory under "catalina.home"), and
@@ -348,10 +364,9 @@ public final class Bootstrap {
     public void start()
         throws Exception {
         if( catalinaDaemon==null ) init();
-
+        System.out.println(catalinaDaemon.getClass());
         Method method = catalinaDaemon.getClass().getMethod("start", (Class [] )null);
         method.invoke(catalinaDaemon, (Object [])null);
-
     }
 
 

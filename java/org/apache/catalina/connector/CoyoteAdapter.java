@@ -300,7 +300,7 @@ public class CoyoteAdapter implements Adapter {
     public void service(org.apache.coyote.Request req, org.apache.coyote.Response res)
             throws Exception {
         System.out.println("org.apache.catalina.connector.CoyoteAdapter.service");
-        System.out.println("coyote.Request转化成http Request");
+        System.out.println("coyote.Request 转化成 http Request");
         Request request = (Request) req.getNote(ADAPTER_NOTES);
         Response response = (Response) res.getNote(ADAPTER_NOTES);
 
@@ -340,13 +340,11 @@ public class CoyoteAdapter implements Adapter {
             if (postParseSuccess) {
                 //check valves if we support async
                 System.out.println("请求处理完成。。。。");
-                request.setAsyncSupported(
-                        connector.getService().getContainer().getPipeline().isAsyncSupported());
+                request.setAsyncSupported(connector.getService().getContainer().getPipeline().isAsyncSupported());
                 // Calling the container
-                System.out.println("请求处理完成。。。。");
                 //StandardEngineValve
-                connector.getService().getContainer().getPipeline().getFirst().invoke(
-                        request, response);
+                connector.getService().getContainer().getPipeline().getFirst().invoke(request, response);
+                System.out.println("请求处理完成。。。。");
             }
             if (request.isAsync()) {
                 async = true;
