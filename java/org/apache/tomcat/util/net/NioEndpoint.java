@@ -406,8 +406,8 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
                         socketProperties.getAppReadBufSize(),
                         socketProperties.getAppWriteBufSize(),
                         socketProperties.getDirectBuffer());
-                if (isSSLEnabled()) {//是否使用Https情求的
-                    System.out.println("使用Https");
+                if (isSSLEnabled()) {//是否开启https
+                    System.out.println("使用Https");//是否使用Https情求的
                     channel = new SecureNioChannel(socket, bufhandler, selectorPool, this);
                 } else {
                     channel = new NioChannel(socket, bufhandler);
@@ -896,6 +896,7 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
         }
 
         protected void processKey(SelectionKey sk, NioSocketWrapper attachment) {
+            System.out.println("org.apache.tomcat.util.net.NioEndpoint.Poller.processKey");
             try {
                 if ( close ) {
                     cancelledKey(sk);

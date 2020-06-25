@@ -663,7 +663,7 @@ public class Http11Processor extends AbstractProcessor {
         throws IOException {
         RequestInfo rp = request.getRequestProcessor();
         rp.setStage(org.apache.coyote.Constants.STAGE_PARSE);
-
+        // 设置 向上 这个 i/o
         // Setting up the I/O
         setSocketWrapper(socketWrapper);
 
@@ -677,6 +677,7 @@ public class Http11Processor extends AbstractProcessor {
         while (!getErrorState().isError() && keepAlive && !isAsync() && upgradeToken == null &&
                 sendfileState == SendfileState.DONE && !endpoint.isPaused()) {
 
+            // 分析请求头
             // Parsing the request header
             try {
                 if (!inputBuffer.parseRequestLine(keptAlive)) {
@@ -733,6 +734,7 @@ public class Http11Processor extends AbstractProcessor {
                 setErrorState(ErrorState.CLOSE_CLEAN, t);
             }
 
+            // 是否已请求升级
             // Has an upgrade been requested?
             Enumeration<String> connectionValues = request.getMimeHeaders().values("Connection");
             boolean foundUpgrade = false;
@@ -795,6 +797,7 @@ public class Http11Processor extends AbstractProcessor {
             if (getErrorState().isIoAllowed()) {
                 try {
                     rp.setStage(org.apache.coyote.Constants.STAGE_SERVICE);
+                    System.out.println("org.apache.coyote.AbstractProcessor.getAdapter().service(request, response)");
                     getAdapter().service(request, response);
                     // Handle when the response was committed before a serious
                     // error occurred.  Throwing a ServletException should both
@@ -1206,6 +1209,7 @@ public class Http11Processor extends AbstractProcessor {
         }
 
         if (!getErrorState().isIoAllowed()) {
+            System.out.println("org.apache.coyote.AbstractProcessor.getAdapter");
             getAdapter().log(request, response, 0);
         }
     }

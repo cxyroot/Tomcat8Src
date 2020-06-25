@@ -439,6 +439,7 @@ public class StandardService extends LifecycleMBeanBase implements Service {
                     // If it has already failed, don't try and start it
                     if (connector.getState() != LifecycleState.FAILED) {
                         System.out.println("org/apache/catalina/core/StandardService.java:442");
+                        System.out.println(connector);
                         connector.start();
                     }
                 } catch (Exception e) {

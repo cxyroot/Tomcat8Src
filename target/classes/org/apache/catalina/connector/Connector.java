@@ -1014,6 +1014,7 @@ public class Connector extends LifecycleMBeanBase  {
         setState(LifecycleState.STARTING);
 
         try {
+            System.out.println(protocolHandler);
             protocolHandler.start();
         } catch (Exception e) {
             throw new LifecycleException(

@@ -343,6 +343,7 @@ public class CoyoteAdapter implements Adapter {
                 request.setAsyncSupported(connector.getService().getContainer().getPipeline().isAsyncSupported());
                 // Calling the container
                 //StandardEngineValve
+                System.out.println(connector.getService().getContainer().getPipeline().getFirst());
                 connector.getService().getContainer().getPipeline().getFirst().invoke(request, response);
                 System.out.println("请求处理完成。。。。");
             }
@@ -379,7 +380,7 @@ public class CoyoteAdapter implements Adapter {
             }
 
         } catch (IOException e) {
-            // Ignore
+            // Ignore  忽视
         } finally {
             AtomicBoolean error = new AtomicBoolean(false);
             res.action(ActionCode.IS_ERROR, error);

@@ -37,6 +37,8 @@ public abstract class SocketProcessorBase<S> implements Runnable {
 
     @Override
     public final void run() {
+        //由 nioEndpoint 的SocketProcessor 调用过来。
+        System.out.println("org.apache.tomcat.util.net.SocketProcessorBase.run");
         synchronized (socketWrapper) {
             // It is possible that processing may be triggered for read and
             // write at the same time. The sync above makes sure that processing
@@ -47,6 +49,7 @@ public abstract class SocketProcessorBase<S> implements Runnable {
             if (socketWrapper.isClosed()) {
                 return;
             }
+            //调用doRun方法
             doRun();
         }
     }

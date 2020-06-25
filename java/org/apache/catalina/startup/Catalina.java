@@ -632,7 +632,7 @@ public class Catalina {
         getServer().setCatalinaHome(Bootstrap.getCatalinaHomeFile());
         getServer().setCatalinaBase(Bootstrap.getCatalinaBaseFile());
 
-        // Stream redirection
+        // Stream redirection 数据流重定向
         initStreams();
 
         // Start the new server
@@ -687,8 +687,8 @@ public class Catalina {
 
         // Start the new server
         try {
-            System.out.println(Thread.currentThread().getStackTrace()[1].getFileName());
-            System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
+            //System.out.println(Thread.currentThread().getStackTrace()[1].getFileName());
+            //System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
             //System.out.println(getServer());
             getServer().start();
         } catch (LifecycleException e) {

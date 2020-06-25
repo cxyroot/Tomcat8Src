@@ -191,8 +191,7 @@ final class StandardWrapperValve
                         } else {
 			                //Ö´ÐÐ¹ýÂËÁ´
                             System.out.println("filterChain.doFilter");
-                            filterChain.doFilter(request.getRequest(),
-                                    response.getResponse());
+                            filterChain.doFilter(request.getRequest(),response.getResponse());
                         }
                     } finally {
                         String log = SystemLogHandler.stopCapture();
