@@ -36,11 +36,11 @@ import java.util.regex.Pattern;
 
 /**
  * 1.Tomcat 本质上是一个 Java 程序，因此startup.sh脚本会启动一个 JVM 来运行 Tomcat 的启动类 Bootstrap。
- * 2.Bootstrap 的主要任务是初始化 Tomcat 的类加载器，并且创建 Catalina。关于 Tomcat 为什么需要自己的类加载器，我会在专栏后面详细介绍。
- * 3.Catalina 是一个启动类，它通过解析server.xml、创建相应的组件，并调用 Server 的 start 方法。
- * 4.Server 组件的职责就是管理 Service 组件，它会负责调用 Service 的 start 方法。
- * 5.Service 组件的职责就是管理连接器和顶层容器 Engine，
- * 	因此它会调用连接器和 Engine 的 start 方法。
+ *  * 2.Bootstrap 的主要任务是初始化 Tomcat 的类加载器，并且创建 Catalina。关于 Tomcat 为什么需要自己的类加载器，我会在专栏后面详细介绍。
+ *  * 3.Catalina 是一个启动类，它通过解析server.xml、创建相应的组件，并调用 Server 的 start 方法。
+ *  * 4.Server 组件的职责就是管理 Service 组件，它会负责调用 Service 的 start 方法。
+ *  * 5.Service 组件的职责就是管理连接器和顶层容器 Engine，
+ *  * 	因此它会调用连接器和 Engine 的 start 方法。
  */
 /**
 
@@ -319,6 +319,7 @@ public final class Bootstrap {
             param = new Object[1];
             param[0] = arguments;
         }
+        // 使用反射方法调用一个类，调用之前需要 这个方法的参数，paramTypes
         Method method =  catalinaDaemon.getClass().getMethod(methodName, paramTypes);
         if (log.isDebugEnabled())
             log.debug("Calling startup class " + method);
@@ -358,19 +359,23 @@ public final class Bootstrap {
 
 
     /**
-     * Start the Catalina daemon.
+     *
+     * 启动  这个  Catalina  半神半人精灵
+     * Start the Catalina daemon. 守护进程
      * @throws Exception Fatal start error
      */
     public void start()
         throws Exception {
         if( catalinaDaemon==null ) init();
         System.out.println(catalinaDaemon.getClass());
+        //
         Method method = catalinaDaemon.getClass().getMethod("start", (Class [] )null);
         method.invoke(catalinaDaemon, (Object [])null);
     }
 
 
     /**
+     * 停止 这个 Catalina 守护进程
      * Stop the Catalina Daemon.
      * @throws Exception Fatal stop error
      */
@@ -501,12 +506,13 @@ public final class Bootstrap {
                 args[args.length - 1] = "stop";
                 daemon.stop();
             } else if (command.equals("start")) {
-                System.out.println("start....");
+                //System.out.println("start....");
                 daemon.setAwait(true);
-                System.out.println("daemon.setAwait(true)");
-                daemon.load(args);
-                System.out.println("daemon.load(args)");
-                daemon.start();
+                //System.out.println("daemon.setAwait(true)");
+                //System.out.println(daemon);
+                daemon.load(args); //调用的是 Catalina 的load 方法
+                //System.out.println("daemon.load(args)");
+                daemon.start(); //调用的是 Catalina 的start 方法
                 if (null == daemon.getServer()) {
                     System.exit(1);
                 }

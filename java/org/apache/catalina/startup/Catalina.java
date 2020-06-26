@@ -534,6 +534,7 @@ public class Catalina {
         if (loaded) {
             return;
         }
+
         loaded = true;
 
         long t1 = System.nanoTime();
@@ -674,6 +675,7 @@ public class Catalina {
      */
     public void start() {
         System.out.println("org.apache.catalina.startup.Catalina.start");
+        // 如果为空 重新创建？ 为啥要重新创建呢？
         if (getServer() == null) {
             load();
         }
@@ -685,12 +687,13 @@ public class Catalina {
 
         long t1 = System.nanoTime();
 
+        // 启动 这个 新的 服务器
         // Start the new server
         try {
             //System.out.println(Thread.currentThread().getStackTrace()[1].getFileName());
             //System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
-            //System.out.println(getServer());
-            getServer().start();
+            System.out.println(getServer());
+            getServer().start();//StandardServer
         } catch (LifecycleException e) {
             log.fatal(sm.getString("catalina.serverStartFail"), e);
             try {

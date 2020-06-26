@@ -768,7 +768,8 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
         // Start our defined Services
         synchronized (servicesLock) {
             for (int i = 0; i < services.length; i++) {
-                services[i].start();
+                System.out.println(services[i]);
+                services[i].start();//StandardService
             }
         }
     }

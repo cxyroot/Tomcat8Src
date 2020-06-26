@@ -419,17 +419,19 @@ public class StandardService extends LifecycleMBeanBase implements Service {
         // Start our defined Container first
         if (engine != null) {
             synchronized (engine) {
-                engine.start();
+                engine.start(); //StandardEngine
             }
         }
         //Ïß³Ç³Ø
         synchronized (executors) {
             for (Executor executor: executors) {
+                System.out.println(executor);
                 executor.start();
             }
         }
 
         //mapperListener
+        System.out.println(mapperListener);
         mapperListener.start();
 
         // Start our defined Connectors second
@@ -557,8 +559,7 @@ public class StandardService extends LifecycleMBeanBase implements Service {
                 try {
                     connector.init();
                 } catch (Exception e) {
-                    String message = sm.getString(
-                            "standardService.connector.initFailed", connector);
+                    String message = sm.getString("standardService.connector.initFailed", connector);
                     log.error(message, e);
 
                     if (Boolean.getBoolean("org.apache.catalina.startup.EXIT_ON_INIT_FAILURE"))

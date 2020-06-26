@@ -70,6 +70,7 @@ public class Connector extends LifecycleMBeanBase  {
     }
     //重要
     public Connector(String protocol) {
+
         setProtocol(protocol);
         // Instantiate protocol handler
         //ProtocolHandler 处理器
@@ -79,6 +80,7 @@ public class Connector extends LifecycleMBeanBase  {
         	// protected String protocolHandlerClassName = "org.apache.coyote.http11.Http11NioProtocol";
             System.out.println("protocolHandlerClassName");
             Class<?> clazz = Class.forName(protocolHandlerClassName);
+            //反射创建
             p = (ProtocolHandler) clazz.getConstructor().newInstance();
         } catch (Exception e) {
             log.error(sm.getString("coyoteConnector.protocolHandlerInstantiationFailed"), e);

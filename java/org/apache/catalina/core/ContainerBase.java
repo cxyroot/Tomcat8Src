@@ -922,6 +922,9 @@ public abstract class ContainerBase extends LifecycleMBeanBase
         List<Future<Void>> results = new ArrayList<>();
         for (int i = 0; i < children.length; i++) {
             System.out.println(children[i]);
+            //启动 StandardHost
+            //启动 HostConfig
+            //启动 StandardContext
             results.add(startStopExecutor.submit(new StartChild(children[i])));
         }
 
@@ -946,6 +949,8 @@ public abstract class ContainerBase extends LifecycleMBeanBase
 
         // Start the Valves in our pipeline (including the basic), if any
         if (pipeline instanceof Lifecycle) {
+            System.out.println(((Lifecycle) pipeline));
+            //Pipeline[StandardEngine[Catalina].StandardHost[localhost].StandardContext[/docs].StandardWrapper[default]]
             ((Lifecycle) pipeline).start();
         }
 
