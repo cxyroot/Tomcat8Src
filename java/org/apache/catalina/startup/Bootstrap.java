@@ -334,8 +334,7 @@ public final class Bootstrap {
     private Object getServer() throws Exception {
 
         String methodName = "getServer";
-        Method method =
-            catalinaDaemon.getClass().getMethod(methodName);
+        Method method = catalinaDaemon.getClass().getMethod(methodName);
         return method.invoke(catalinaDaemon);
 
     }

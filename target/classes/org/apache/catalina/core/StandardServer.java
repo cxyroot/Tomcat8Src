@@ -834,8 +834,7 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
                         if (url.getProtocol().equals("file")) {
                             try {
                                 File f = new File (url.toURI());
-                                if (f.isFile() &&
-                                        f.getName().endsWith(".jar")) {
+                                if (f.isFile() && f.getName().endsWith(".jar")) {
                                     ExtensionValidator.addSystemResource(f);
                                 }
                             } catch (URISyntaxException e) {
