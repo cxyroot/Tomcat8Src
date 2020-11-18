@@ -1581,6 +1581,7 @@ public class StandardWrapper extends ContainerBase
     @Override
     protected synchronized void startInternal() throws LifecycleException {
 
+        System.out.println("org.apache.catalina.core.StandardWrapper.startInternal");
         // Send j2ee.state.starting notification
         if (this.getObjectName() != null) {
             Notification notification = new Notification("j2ee.state.starting",
