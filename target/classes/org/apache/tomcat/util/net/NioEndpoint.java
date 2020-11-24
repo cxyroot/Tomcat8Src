@@ -454,7 +454,7 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
 
         @Override
         public void run() {
-
+            System.out.println("org.apache.tomcat.util.net.NioEndpoint.Acceptor");
             int errorDelay = 0;
 
             // Loop until we receive a shutdown command
@@ -488,7 +488,9 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
                         // socket
                         System.out.println("serverSock.accept(),org.apache.tomcat.util.net.NioEndpoint.Acceptor.run");
                         System.out.println("org.apache.tomcat.util.net.NioEndpoint.serverSock");
+                        //接收请求
                         socket = serverSock.accept();
+                        System.out.println("接收请求 "+socket);
                     } catch (IOException ioe) {
                         // We didn't get a socket
                         countDownConnection();
@@ -757,12 +759,16 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
             ka.setReadTimeout(getConnectionTimeout());
             ka.setWriteTimeout(getConnectionTimeout());
             System.out.println("org.apache.tomcat.util.net.NioEndpoint.PollerEvent");
+
             PollerEvent r = eventCache.pop();
             ka.interestOps(SelectionKey.OP_READ);//this is what OP_REGISTER turns into.
-            if ( r==null)
+            if ( r==null){
+                //生成PollerEvent
                 r = new PollerEvent(socket,ka,OP_REGISTER);
-            else
+            }else{
+                //生成PollerEvent
                 r.reset(socket,ka,OP_REGISTER);
+            }
             addEvent(r);
         }
 
@@ -849,7 +855,7 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
                     }
                     if (close) {
                         System.out.println("caoxiaoyang!!!");
-                        System.out.println(close);
+                        //System.out.println(close);
                         System.out.println("org.apache.tomcat.util.net.NioEndpoint.Poller.events");
                         events();
                         System.out.println("org.apache.tomcat.util.net.NioEndpoint.Poller.timeout");
