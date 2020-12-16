@@ -14,7 +14,7 @@
   limitations under the License.
 
 Tomcat Startup Sequence
-
+TomcatµÄÆô¶¯²½Öè
 Sequence 1. Start from Command Line
 Class: org.apache.catalina.startup.Bootstrap
 What it does:
