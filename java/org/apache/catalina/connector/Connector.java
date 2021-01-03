@@ -969,8 +969,11 @@ public class Connector extends LifecycleMBeanBase  {
 
         super.initInternal();
 
+        // 初始化 adapter
         // Initialize adapter
+        System.out.println("org.apache.catalina.connector.Connector.initInternal:"+"Initialize adapter");
         adapter = new CoyoteAdapter(this);
+        System.out.println("org.apache.catalina.connector.Connector.adapter"+adapter);//CoyoteAdapter
         protocolHandler.setAdapter(adapter);
 
         // Make sure parseBodyMethodsSet has a default
@@ -991,7 +994,7 @@ public class Connector extends LifecycleMBeanBase  {
         }
 
         try {
-        	//�������ڡ�
+            System.out.println("org.apache.catalina.connector.Connector.protocolHandler:"+protocolHandler);
             protocolHandler.init();
         } catch (Exception e) {
             throw new LifecycleException(sm.getString("coyoteConnector.protocolHandlerInitializationFailed"), e);

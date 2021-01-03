@@ -556,6 +556,7 @@ public abstract class AbstractProtocol<S> implements ProtocolHandler,
 
     @Override
     public void init() throws Exception {
+        System.out.println("org.apache.coyote.AbstractProtocol.init");
         if (getLog().isInfoEnabled()) {
             getLog().info(sm.getString("abstractProtocolHandler.init", getName()));
         }
@@ -577,7 +578,8 @@ public abstract class AbstractProtocol<S> implements ProtocolHandler,
         String endpointName = getName();
         endpoint.setName(endpointName.substring(1, endpointName.length()-1));
         endpoint.setDomain(domain);
-
+        System.out.println("org.apache.coyote.AbstractProtocol.init："+"endpoint初始化");
+        System.out.println("org.apache.coyote.AbstractProtocol.init："+endpoint);
         endpoint.init();
     }
 

@@ -33,6 +33,7 @@ import org.apache.juli.logging.Log;
  * order configured at runtime, by implementing the <b>Pipeline</b> interface
  * as well.
  * <p>
+ * 容器的子类有  Engine，Host，Context，Wrapper
  * Containers will exist at several conceptual levels within Catalina.  The
  * following examples represent common cases:
  * <ul>
@@ -47,6 +48,9 @@ import org.apache.juli.logging.Log;
  *     (which may support multiple servlet instances if the servlet itself
  *     implements SingleThreadModel).
  * </ul>
+ *
+ *
+ *
  * A given deployment of Catalina need not include Containers at all of the
  * levels described above.  For example, an administration application
  * embedded within a network device (such as a router) might only contain

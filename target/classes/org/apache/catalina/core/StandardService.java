@@ -537,6 +537,8 @@ public class StandardService extends LifecycleMBeanBase implements Service {
 
         if (engine != null) {
             //初始化engine
+            System.out.println("org.apache.catalina.core.StandardService.initInternal:"+engine);
+            System.out.println("org.apache.catalina.core.StandardService.initInternal:"+"engine初始化");
             engine.init();
         }
 
@@ -557,6 +559,7 @@ public class StandardService extends LifecycleMBeanBase implements Service {
         synchronized (connectorsLock) {
             for (Connector connector : connectors) {
                 try {
+                    System.out.println("org.apache.catalina.core.StandardService.initInternal:"+connector);
                     connector.init();
                 } catch (Exception e) {
                     String message = sm.getString("standardService.connector.initFailed", connector);

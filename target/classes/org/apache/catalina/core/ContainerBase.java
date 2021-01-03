@@ -1289,6 +1289,7 @@ public abstract class ContainerBase extends LifecycleMBeanBase
 
         threadDone = false;
         String threadName = "ContainerBackgroundProcessor[" + toString() + "]";
+        //一种新的线程启动方式  使用new Thread（）方法来启动.
         thread = new Thread(new ContainerBackgroundProcessor(), threadName);
         thread.setDaemon(true);
         thread.start();
@@ -1339,6 +1340,8 @@ public abstract class ContainerBase extends LifecycleMBeanBase
     /**
      * Private thread class to invoke the backgroundProcess method
      * of this container and its children after a fixed delay.
+     * 这个是tomcat热加载和热部署的主要实现方法
+     *
      */
     protected class ContainerBackgroundProcessor implements Runnable {
 
@@ -1388,6 +1391,7 @@ public abstract class ContainerBase extends LifecycleMBeanBase
                 Container[] children = container.findChildren();
                 for (int i = 0; i < children.length; i++) {
                     if (children[i].getBackgroundProcessorDelay() <= 0) {
+                        //递归调用
                         processChildren(children[i]);
                     }
                 }

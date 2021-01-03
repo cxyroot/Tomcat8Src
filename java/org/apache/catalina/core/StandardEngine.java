@@ -233,9 +233,15 @@ public class StandardEngine extends ContainerBase implements Engine {
 
 
     @Override
+    public int getStartStopThreads() {
+        return super.getStartStopThreads();
+    }
+
+    @Override
     protected void initInternal() throws LifecycleException {
         // Ensure that a Realm is present before any attempt is made to start
         // one. This will create the default NullRealm if necessary.
+        System.out.println("org.apache.catalina.core.StandardEngine.initInternal");
         getRealm();
         super.initInternal();
     }

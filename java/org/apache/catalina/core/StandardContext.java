@@ -5540,7 +5540,7 @@ public class StandardContext extends ContainerBase
 
     @Override
     public void backgroundProcess() {
-
+        //一些周期性的任务。
         if (!getState().isAvailable())
             return;
 

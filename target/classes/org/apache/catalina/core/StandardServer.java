@@ -850,6 +850,7 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
         }
         // Initialize our defined Services
         for (int i = 0; i < services.length; i++) {
+            System.out.println("org.apache.catalina.core.StandardServer.initInternal:"+services[i]);
             services[i].init();
         }
     }
