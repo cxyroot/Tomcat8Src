@@ -558,7 +558,8 @@ public abstract class AbstractProtocol<S> implements ProtocolHandler,
     public void init() throws Exception {
         System.out.println("org.apache.coyote.AbstractProtocol.init");
         if (getLog().isInfoEnabled()) {
-            getLog().info(sm.getString("abstractProtocolHandler.init", getName()));
+        	System.out.println("abstractProtocolHandler.init");
+            //getLog().info(sm.getString("abstractProtocolHandler.init", getName()));
         }
 
         if (oname == null) {

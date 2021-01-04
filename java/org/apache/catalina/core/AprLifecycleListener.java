@@ -128,7 +128,8 @@ public class AprLifecycleListener
             synchronized (lock) {
                 init();
                 for (String msg : initInfoLogMessages) {
-                    log.info(msg);
+                    //log.info(msg);
+                	System.out.println("org.apache.catalina.core.AprLifecycleListener.lifecycleEvent(LifecycleEvent)");
                 }
                 initInfoLogMessages.clear();
                 if (aprAvailable) {

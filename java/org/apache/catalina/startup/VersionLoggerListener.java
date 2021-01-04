@@ -16,16 +16,9 @@
  */
 package org.apache.catalina.startup;
 
-import java.lang.management.ManagementFactory;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-
 import org.apache.catalina.Lifecycle;
 import org.apache.catalina.LifecycleEvent;
 import org.apache.catalina.LifecycleListener;
-import org.apache.catalina.util.ServerInfo;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.apache.tomcat.util.res.StringManager;
@@ -86,6 +79,8 @@ public class VersionLoggerListener implements LifecycleListener {
 
 
     private void log() {
+    	System.out.println("org.apache.catalina.startup.VersionLoggerListener.log():"+"log");
+    	/*
         log.info(sm.getString("versionLoggerListener.serverInfo.server.version",
                 ServerInfo.getServerInfo()));
         log.info(sm.getString("versionLoggerListener.serverInfo.server.built",
@@ -132,5 +127,6 @@ public class VersionLoggerListener implements LifecycleListener {
                 log.info(sm.getString("versionLoggerListener.prop", e.getKey(), e.getValue()));
             }
         }
+        */
     }
 }

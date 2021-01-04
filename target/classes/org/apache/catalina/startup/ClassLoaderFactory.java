@@ -252,16 +252,18 @@ public final class ClassLoaderFactory {
                 File base = new File (Bootstrap.getCatalinaBase());
                 base = base.getCanonicalFile();
                 File defaultValue = new File(base, "lib");
-
+                
                 // Existence of ${catalina.base}/lib directory is optional.
                 // Hide the warning if Tomcat runs with separate catalina.home
                 // and catalina.base and that directory is absent.
                 if (!home.getPath().equals(base.getPath())
                         && file.getPath().equals(defaultValue.getPath())
                         && !file.exists()) {
-                    log.debug(msg);
+                    //log.debug(msg);
+                    System.out.println("org.apache.catalina.startup.ClassLoaderFactory.validateFile(File, RepositoryType):"+"log.debug");
                 } else {
-                    log.warn(msg);
+                    //log.warn(msg);
+                    System.out.println("org.apache.catalina.startup.ClassLoaderFactory.validateFile(File, RepositoryType):"+"log.warn");
                 }
                 return false;
             }
