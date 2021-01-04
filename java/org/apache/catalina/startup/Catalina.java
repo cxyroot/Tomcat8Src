@@ -52,6 +52,7 @@ import org.xml.sax.SAXParseException;
 
 
 /**
+ * 开启/关闭 这个程序都要通过 Catalina
  * Startup/Shutdown shell program for Catalina.  The following command line
  * options are recognized:
  * <ul>
@@ -674,6 +675,7 @@ public class Catalina {
      * Start a new server instance.
      */
     public void start() {
+        //直接开启
         System.out.println("org.apache.catalina.startup.Catalina.start");
         // 如果为空 重新创建？ 为啥要重新创建呢？
         if (getServer() == null) {
@@ -692,7 +694,7 @@ public class Catalina {
         try {
             //System.out.println(Thread.currentThread().getStackTrace()[1].getFileName());
             //System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
-            System.out.println(getServer());
+            System.out.println("org.apache.catalina.startup.Catalina.start:"+getServer().toString());
             getServer().start();//StandardServer
         } catch (LifecycleException e) {
             log.fatal(sm.getString("catalina.serverStartFail"), e);
