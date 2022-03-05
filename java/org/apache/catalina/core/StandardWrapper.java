@@ -983,6 +983,7 @@ public class StandardWrapper extends ContainerBase
      */
     @Override
     public synchronized void load() throws ServletException {
+        System.out.println("org.apache.catalina.core.StandardWrapper.load"+"..............start");
         instance = loadServlet();
 
         if (!instanceInitialized) {
@@ -1008,6 +1009,7 @@ public class StandardWrapper extends ContainerBase
                 log.warn("Error registering JSP monitoring with jmx " + instance);
             }
         }
+        System.out.println("org.apache.catalina.core.StandardWrapper.load"+"..............end");
     }
 
 
@@ -1020,7 +1022,7 @@ public class StandardWrapper extends ContainerBase
      * @throws ServletException for a Servlet load error
      */
     public synchronized Servlet loadServlet() throws ServletException {
-
+        System.out.println("org.apache.catalina.core.StandardWrapper.loadServlet" + "...................start");
         // Nothing to do if we already have an instance or an instance pool
         if (!singleThreadModel && (instance != null))
             return instance;
@@ -1106,6 +1108,7 @@ public class StandardWrapper extends ContainerBase
                 }
             }
         }
+        System.out.println("org.apache.catalina.core.StandardWrapper.loadServlet" + "...................end");
         return servlet;
 
     }
@@ -1121,7 +1124,7 @@ public class StandardWrapper extends ContainerBase
 
     private synchronized void initServlet(Servlet servlet)
             throws ServletException {
-
+        System.out.println("org.apache.catalina.core.StandardWrapper.initServlet"+"..................start");
         if (instanceInitialized && !singleThreadModel) return;
 
         // Call the initialization method of this servlet
@@ -1142,6 +1145,8 @@ public class StandardWrapper extends ContainerBase
                     }
                 }
             } else {
+                System.out.println("servlet 初始化。。。。。。。");
+                System.out.println("servlet 初始化。。。。。。。");
                 servlet.init(facade);
             }
 
@@ -1161,6 +1166,7 @@ public class StandardWrapper extends ContainerBase
             throw new ServletException
                 (sm.getString("standardWrapper.initException", getName()), f);
         }
+        System.out.println("org.apache.catalina.core.StandardWrapper.initServlet"+"..................end");
     }
 
     /**

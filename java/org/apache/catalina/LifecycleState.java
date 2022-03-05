@@ -35,7 +35,9 @@ public enum LifecycleState {
     STARTED(true, Lifecycle.AFTER_START_EVENT),
     //
     STOPPING_PREP(true, Lifecycle.BEFORE_STOP_EVENT),
+    //×ß×ßÍ£Í£
     STOPPING(false, Lifecycle.STOP_EVENT),
+    //Í£Ö¹
     STOPPED(false, Lifecycle.AFTER_STOP_EVENT),
     DESTROYING(false, Lifecycle.BEFORE_DESTROY_EVENT),
     DESTROYED(false, Lifecycle.AFTER_DESTROY_EVENT),

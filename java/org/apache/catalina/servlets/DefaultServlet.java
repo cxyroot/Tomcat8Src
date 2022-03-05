@@ -303,7 +303,7 @@ public class DefaultServlet extends HttpServlet {
      */
     @Override
     public void init() throws ServletException {
-
+        System.out.println("org.apache.catalina.servlets.DefaultServlet.init");
         if (getServletConfig().getInitParameter("debug") != null)
             debug = Integer.parseInt(getServletConfig().getInitParameter("debug"));
 
@@ -477,7 +477,7 @@ public class DefaultServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
+        System.out.println("org.apache.catalina.servlets.DefaultServlet.service");
         if (req.getDispatcherType() == DispatcherType.ERROR) {
             doGet(req, resp);
         } else {

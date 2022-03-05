@@ -416,6 +416,7 @@ public class HostConfig implements LifecycleListener {
      * in our "application root" directory.
      */
     protected void deployApps() {
+        System.out.println("org.apache.catalina.startup.HostConfig.deployApps()");
     	//×¢²áwebApp
         //host ==> StandardHost
         File appBase = host.getAppBaseFile();
@@ -1572,9 +1573,9 @@ public class HostConfig implements LifecycleListener {
             host.setAutoDeploy(false);
         }
         //²¿ÊðWebApp
-        if (host.getDeployOnStartup())
+        if (host.getDeployOnStartup()){
             deployApps();
-
+        }
     }
 
 

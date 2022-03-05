@@ -307,7 +307,7 @@ public abstract class HttpServlet extends GenericServlet {
      */
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
         throws ServletException, IOException {
-
+        System.out.println("javax.servlet.http.HttpServlet.doPost");
         String protocol = req.getProtocol();
         String msg = lStrings.getString("http.method_post_not_supported");
         if (protocol.endsWith("1.1")) {
@@ -623,7 +623,8 @@ public abstract class HttpServlet extends GenericServlet {
      */
     protected void service(HttpServletRequest req, HttpServletResponse resp)
         throws ServletException, IOException {
-
+        System.out.println("javax.servlet.http.HttpServlet.service(javax.servlet.http.HttpServletRequest, " +
+                "javax.servlet.http.HttpServletResponse)");
         String method = req.getMethod();
 
         if (method.equals(METHOD_GET)) {

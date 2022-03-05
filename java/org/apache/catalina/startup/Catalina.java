@@ -111,6 +111,7 @@ public class Catalina {
 
 
     /**
+     * 关闭钩子
      * Shutdown hook.
      */
     protected Thread shutdownHook = null;
@@ -678,6 +679,7 @@ public class Catalina {
         //直接开启
         System.out.println("org.apache.catalina.startup.Catalina.start");
         // 如果为空 重新创建？ 为啥要重新创建呢？
+        // System.out.println(getServer().toString());
         if (getServer() == null) {
             load();
         }
@@ -732,6 +734,7 @@ public class Catalina {
         }
 
         if (await) {
+            //控制启动完成后是否退出tomcat
             await();
             stop();
         }
@@ -855,6 +858,7 @@ public class Catalina {
      */
     protected void setSecurityProtection(){
         SecurityConfig securityConfig = SecurityConfig.newInstance();
+        System.out.println(securityConfig);
         securityConfig.setPackageDefinition();
         securityConfig.setPackageAccess();
     }

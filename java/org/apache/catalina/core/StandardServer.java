@@ -34,6 +34,7 @@ import java.util.Random;
 import javax.management.InstanceNotFoundException;
 import javax.management.MBeanException;
 import javax.management.ObjectName;
+import javax.servlet.ServletOutputStream;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
@@ -396,6 +397,7 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
      */
     @Override
     public void await() {
+        System.out.println("org.apache.catalina.core.StandardServer.await");
         // Negative values - don't wait on port - tomcat is embedded or we just don't like ports
         if( port == -2 ) {
             // undocumented yet - for embedding apps that are around, alive.
@@ -419,8 +421,7 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
 
         // Set up a server socket to wait on
         try {
-            awaitSocket = new ServerSocket(port, 1,
-                    InetAddress.getByName(address));
+            awaitSocket = new ServerSocket(port, 1,InetAddress.getByName(address));
         } catch (IOException e) {
             log.error("StandardServer.await: create[" + address
                                + ":" + port

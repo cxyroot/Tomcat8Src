@@ -37,7 +37,7 @@ public abstract class SocketProcessorBase<S> implements Runnable {
 
     @Override
     public final void run() {
-        //由 nioEndpoint 的SocketProcessor 调用过来。
+        //由 nioEndpoint 的 SocketProcessor 调用过来。
         System.out.println("org.apache.tomcat.util.net.SocketProcessorBase.run");
         synchronized (socketWrapper) {
             // It is possible that processing may be triggered for read and
@@ -45,7 +45,7 @@ public abstract class SocketProcessorBase<S> implements Runnable {
             // does not occur in parallel. The test below ensures that if the
             // first event to be processed results in the socket being closed,
             // the subsequent events are not processed.
-            System.out.println("请求=====1");
+            System.out.println(" 请求 =====1");
             if (socketWrapper.isClosed()) {
                 return;
             }

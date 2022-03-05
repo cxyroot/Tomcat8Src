@@ -151,6 +151,7 @@ public final class Bootstrap {
 
     /**
      * Daemon reference.
+     * 守护进程引用
      */
     private Object catalinaDaemon = null;
 
