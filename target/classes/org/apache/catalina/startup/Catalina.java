@@ -99,12 +99,14 @@ public class Catalina {
 
 
     /**
+     *
      * The server component we are starting or stopping.
      */
     protected Server server = null;
 
 
     /**
+     * 使用的关闭钩子的标志
      * Use shutdown hook flag.
      */
     protected boolean useShutdownHook = true;
@@ -125,6 +127,7 @@ public class Catalina {
 
 
     /**
+     * 防止重复加载。
      * Prevent duplicate loads.
      */
     protected boolean loaded = false;
@@ -272,6 +275,7 @@ public class Catalina {
 
 
     /**
+     *
      * Create and configure the Digester we will be using for startup.
      * @return the main digester to parse server.xml
      */

@@ -33,13 +33,15 @@ public enum LifecycleState {
     STARTING(true, Lifecycle.START_EVENT),
     //出发
     STARTED(true, Lifecycle.AFTER_START_EVENT),
-    //
+    //停止前准备
     STOPPING_PREP(true, Lifecycle.BEFORE_STOP_EVENT),
     //走走停停
     STOPPING(false, Lifecycle.STOP_EVENT),
     //停止
     STOPPED(false, Lifecycle.AFTER_STOP_EVENT),
+    //摧毁; 毁灭; 破坏; (因动物有病或不再需要而)杀死，消灭，人道毁灭;
     DESTROYING(false, Lifecycle.BEFORE_DESTROY_EVENT),
+    //摧毁
     DESTROYED(false, Lifecycle.AFTER_DESTROY_EVENT),
     // 错误
     FAILED(false, null);

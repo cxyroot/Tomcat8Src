@@ -69,6 +69,7 @@ public class StringManager {
      * @param packageName Name of package to create StringManager for.
      */
     private StringManager(String packageName, Locale locale) {
+        System.out.println("org.apache.tomcat.util.res.StringManager.StringManager");
         String bundleName = packageName + ".LocalStrings";
         ResourceBundle bnd = null;
         try {

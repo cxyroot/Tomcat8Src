@@ -74,7 +74,7 @@ public final class Bootstrap {
 
     private static final Log log = LogFactory.getLog(Bootstrap.class);
 
-    /**
+    /** 
      * Daemon object used by main.
      */
     private static Bootstrap daemon = null;
