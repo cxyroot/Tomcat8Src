@@ -559,7 +559,7 @@ public class StandardService extends LifecycleMBeanBase implements Service {
         synchronized (connectorsLock) {
             for (Connector connector : connectors) {
                 try {
-                    System.out.println("org.apache.catalina.core.StandardService.initInternal:"+connector);
+                    System.out.println("org.apache.catalina.connector.Connector:"+connector);
                     connector.init();
                 } catch (Exception e) {
                     String message = sm.getString("standardService.connector.initFailed", connector);
