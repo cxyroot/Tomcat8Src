@@ -927,6 +927,8 @@ public abstract class ContainerBase extends LifecycleMBeanBase
             //启动 StandardHost
             //启动 HostConfig
             //启动 StandardContext
+            //StandardEngine[Catalina].StandardHost[localhost].StandardContext[].StandardWrapper[default]
+            //StandardEngine[Catalina].StandardHost[localhost].StandardContext[].StandardWrapper[jsp]
             results.add(startStopExecutor.submit(new StartChild(children[i])));
         }
 

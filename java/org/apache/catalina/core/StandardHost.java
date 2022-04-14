@@ -67,7 +67,9 @@ public class StandardHost extends ContainerBase implements Host {
     public StandardHost() {
 
         super();
-        pipeline.setBasic(new StandardHostValve());
+        System.out.println("org.apache.catalina.core.StandardHost.StandardHost");
+        StandardHostValve standardHostValve = new StandardHostValve();
+        pipeline.setBasic(standardHostValve);
 
     }
 
