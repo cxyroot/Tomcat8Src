@@ -513,7 +513,7 @@ public final class Bootstrap {
                 //System.out.println(daemon);
                 daemon.load(args); //调用的是 Catalina 的load 方法
                 //load完成后自动停止服务器
-                System.exit(0);
+                //System.exit(0);
                 //System.out.println("daemon.load(args)");
                 daemon.start(); //调用的是 Catalina 的start 方法
                 if (null == daemon.getServer()) {

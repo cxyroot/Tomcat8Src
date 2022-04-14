@@ -87,6 +87,7 @@ public class StandardWrapper extends ContainerBase
     public StandardWrapper() {
 
         super();
+        System.out.println("org.apache.catalina.core.StandardWrapper.StandardWrapper");
         swValve=new StandardWrapperValve();
         pipeline.setBasic(swValve);
         broadcaster = new NotificationBroadcasterSupport();

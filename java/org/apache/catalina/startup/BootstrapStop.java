@@ -70,14 +70,14 @@ import java.util.regex.Pattern;
  * @author Craig R. McClanahan
  * @author Remy Maucherat
  */
-public final class Bootstrap {
+public final class BootstrapStop {
 
     private static final Log log = LogFactory.getLog(Bootstrap.class);
 
     /** 
      * Daemon object used by main.
      */
-    private static Bootstrap daemon = null;
+    private static BootstrapStop daemon = null;
 
     private static final File catalinaBaseFile;
     private static final File catalinaHomeFile;
@@ -476,7 +476,7 @@ public final class Bootstrap {
         System.out.println("org.apache.catalina.startup.Bootstrap.main");
         if (daemon == null) {
             // Don't set daemon until init() has completed
-            Bootstrap bootstrap = new Bootstrap();
+            BootstrapStop bootstrap = new BootstrapStop();
             try {
                 bootstrap.init();
             } catch (Throwable t) {
@@ -493,7 +493,7 @@ public final class Bootstrap {
         }
 
         try {
-            String command = "start";
+            String command = "stop";
             if (args.length > 0) {
                 command = args[args.length - 1];
             }
@@ -513,7 +513,7 @@ public final class Bootstrap {
                 //System.out.println(daemon);
                 daemon.load(args); //调用的是 Catalina 的load 方法
                 //load完成后自动停止服务器
-                //System.exit(0);
+                System.exit(0);
                 //System.out.println("daemon.load(args)");
                 daemon.start(); //调用的是 Catalina 的start 方法
                 if (null == daemon.getServer()) {
