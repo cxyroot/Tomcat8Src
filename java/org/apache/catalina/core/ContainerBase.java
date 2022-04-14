@@ -953,7 +953,7 @@ public abstract class ContainerBase extends LifecycleMBeanBase
 
         // Start the Valves in our pipeline (including the basic), if any
         if (pipeline instanceof Lifecycle) {
-            System.out.println(((Lifecycle) pipeline));
+            System.err.println(((Lifecycle) pipeline));
             //Pipeline[StandardEngine[Catalina].StandardHost[localhost].StandardContext[/docs].StandardWrapper[default]]
             ((Lifecycle) pipeline).start();
         }
