@@ -130,10 +130,10 @@ public class NioSelectorPool {
         enabled = true;
         getSharedSelector();
         if (SHARED) {
+            // NioBlockingSelector
             blockingSelector = new NioBlockingSelector();
             blockingSelector.open(getSharedSelector());
         }
-
     }
 
     /**

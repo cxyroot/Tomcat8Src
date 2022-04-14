@@ -215,6 +215,7 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
     public void bind() throws Exception {
         System.out.println("org.apache.tomcat.util.net.NioEndpoint.bind");
         if (!getUseInheritedChannel()) {
+            //ServerSocketChannel
             serverSock = ServerSocketChannel.open();
             socketProperties.setProperties(serverSock.socket());
             InetSocketAddress addr = (getAddress()!=null?new InetSocketAddress(getAddress(),getPort()):new InetSocketAddress(getPort()));
@@ -229,7 +230,7 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
                 throw new IllegalArgumentException(sm.getString("endpoint.init.bind.inherited"));
             }
         }
-        serverSock.configureBlocking(true); //mimic APR behavior
+        serverSock.configureBlocking(true); //mimic APR behavior  模仿APR
 
         // Initialize thread count defaults for acceptor, poller
         if (acceptorThreadCount == 0) {
