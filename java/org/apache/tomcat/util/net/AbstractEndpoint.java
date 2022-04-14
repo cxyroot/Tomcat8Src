@@ -1122,6 +1122,7 @@ public abstract class AbstractEndpoint<S> {
     public abstract void stopInternal() throws Exception;
 
     public void init() throws Exception {
+        System.out.println("org.apache.tomcat.util.net.AbstractEndpoint.init");
         if (bindOnInit) {
             bind();
             bindState = BindState.BOUND_ON_INIT;

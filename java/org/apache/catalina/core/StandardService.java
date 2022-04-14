@@ -539,6 +539,7 @@ public class StandardService extends LifecycleMBeanBase implements Service {
             //初始化engine
             System.out.println("org.apache.catalina.core.StandardService.initInternal:"+engine);
             System.out.println("org.apache.catalina.core.StandardService.initInternal:"+"engine初始化");
+            System.out.println(engine.toString());
             engine.init();
         }
 

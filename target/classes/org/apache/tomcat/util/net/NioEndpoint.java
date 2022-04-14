@@ -212,7 +212,7 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
      */
     @Override
     public void bind() throws Exception {
-
+        System.out.println("org.apache.tomcat.util.net.NioEndpoint.bind");
         if (!getUseInheritedChannel()) {
             serverSock = ServerSocketChannel.open();
             socketProperties.setProperties(serverSock.socket());
@@ -243,7 +243,8 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
 
         // Initialize SSL if needed
         initialiseSsl();
-
+        System.out.println("org.apache.tomcat.util.net.NioEndpoint.bind:::::::selectorPool.open();");
+        System.out.println("org.apache.tomcat.util.net.NioSelectorPool===========");
         selectorPool.open();
     }
 
