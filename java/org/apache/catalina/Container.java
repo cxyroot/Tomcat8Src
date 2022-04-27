@@ -33,7 +33,9 @@ import org.apache.juli.logging.Log;
  * order configured at runtime, by implementing the <b>Pipeline</b> interface
  * as well.
  * <p>
+ *
  * 容器的子类有  Engine，Host，Context，Wrapper
+ *
  * Containers will exist at several conceptual levels within Catalina.  The
  * following examples represent common cases:
  * <ul>
