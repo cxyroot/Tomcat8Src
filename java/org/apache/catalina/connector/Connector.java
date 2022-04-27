@@ -78,7 +78,7 @@ public class Connector extends LifecycleMBeanBase  {
         ProtocolHandler p = null;
         try {
         	// protected String protocolHandlerClassName = "org.apache.coyote.http11.Http11NioProtocol";
-            System.out.println("protocolHandlerClassName");
+            System.out.println("反射创建:org.apache.catalina.connector.Connector.protocolHandlerClassName");
             Class<?> clazz = Class.forName(protocolHandlerClassName);
             //反射创建
             p = (ProtocolHandler) clazz.getConstructor().newInstance();

@@ -65,7 +65,7 @@ public class NioSelectorPool {
                 if ( SHARED_SELECTOR == null )  {
                 	System.out.println("org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector():"+"selector.open方法");
                     SHARED_SELECTOR = Selector.open();
-                    //log.info("Using a shared selector for servlet write/read");
+                    log.info("Using a shared selector for servlet write/read");
                 }
             }
         }
@@ -130,10 +130,10 @@ public class NioSelectorPool {
         enabled = true;
         getSharedSelector();
         if (SHARED) {
+            // NioBlockingSelector
             blockingSelector = new NioBlockingSelector();
             blockingSelector.open(getSharedSelector());
         }
-
     }
 
     /**

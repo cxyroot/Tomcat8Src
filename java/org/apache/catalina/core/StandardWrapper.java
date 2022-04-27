@@ -35,13 +35,7 @@ import javax.management.NotificationEmitter;
 import javax.management.NotificationFilter;
 import javax.management.NotificationListener;
 import javax.management.ObjectName;
-import javax.servlet.MultipartConfigElement;
-import javax.servlet.Servlet;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.SingleThreadModel;
-import javax.servlet.UnavailableException;
+import javax.servlet.*;
 import javax.servlet.annotation.MultipartConfig;
 
 import org.apache.catalina.Container;
@@ -88,7 +82,9 @@ public class StandardWrapper extends ContainerBase
     public StandardWrapper() {
 
         super();
-        swValve=new StandardWrapperValve();
+        System.out.println("org.apache.catalina.core.StandardWrapper.StandardWrapper");
+        System.out.println("在构造方法里面 new StandardWrapperValve");
+        swValve = new StandardWrapperValve();
         pipeline.setBasic(swValve);
         broadcaster = new NotificationBroadcasterSupport();
 
@@ -1598,6 +1594,7 @@ public class StandardWrapper extends ContainerBase
         }
 
         // Start up this component
+        // 启动此组件
         super.startInternal();
 
         setAvailable(0L);

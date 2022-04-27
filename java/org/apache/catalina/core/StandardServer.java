@@ -808,12 +808,13 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
         //运行父类的 initInternal
         super.initInternal();
 
-        // Register global String cache
-        // Note although the cache is global, if there are multiple Servers
+        // Register global String cache 注册全局字符串缓存
+        // Note although the cache is global, if there are multiple Servers 请注意，尽管缓存是全局的 如果有多个服务器
         // present in the JVM (may happen when embedding) then the same cache
         // will be registered under multiple names
         onameStringCache = register(new StringCache(), "type=StringCache");
 
+        // 注册 MBeanFactory
         // Register the MBeanFactory
         MBeanFactory factory = new MBeanFactory();
         factory.setContainer(this);
@@ -851,7 +852,7 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
         }
         // Initialize our defined Services
         for (int i = 0; i < services.length; i++) {
-            System.out.println("org.apache.catalina.core.StandardServer.initInternal:"+services[i]);
+            System.out.println("org.apache.catalina.core.StandardService.initInternal:"+services[i]);
             services[i].init();
         }
     }

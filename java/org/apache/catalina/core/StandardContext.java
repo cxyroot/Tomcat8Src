@@ -56,26 +56,8 @@ import javax.management.NotificationEmitter;
 import javax.management.NotificationFilter;
 import javax.management.NotificationListener;
 import javax.naming.NamingException;
-import javax.servlet.Filter;
-import javax.servlet.FilterConfig;
-import javax.servlet.FilterRegistration;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContainerInitializer;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextAttributeListener;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
+import javax.servlet.*;
 import javax.servlet.ServletRegistration.Dynamic;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletRequestAttributeListener;
-import javax.servlet.ServletRequestEvent;
-import javax.servlet.ServletRequestListener;
-import javax.servlet.ServletSecurityElement;
-import javax.servlet.SessionCookieConfig;
-import javax.servlet.SessionTrackingMode;
 import javax.servlet.descriptor.JspConfigDescriptor;
 import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionIdListener;
@@ -160,7 +142,9 @@ public class StandardContext extends ContainerBase
     public StandardContext() {
 
         super();
-        pipeline.setBasic(new StandardContextValve());
+        StandardContextValve standardContextValve = new StandardContextValve();
+        System.out.println(this.getClass() + " " + standardContextValve);
+        pipeline.setBasic(standardContextValve);
         broadcaster = new NotificationBroadcasterSupport();
         // Set defaults
         if (!Globals.STRICT_SERVLET_COMPLIANCE) {
@@ -4903,6 +4887,7 @@ public class StandardContext extends ContainerBase
 
 
     /**
+     *
      * Start this component and implement the requirements
      * of {@link org.apache.catalina.util.LifecycleBase#startInternal()}.
      *
@@ -4913,9 +4898,9 @@ public class StandardContext extends ContainerBase
     protected synchronized void startInternal() throws LifecycleException {
         //Host的子容器
         System.out.println("org.apache.catalina.core.StandardContext.startInternal");
-        if(log.isDebugEnabled())
+        if(log.isDebugEnabled()){
             log.debug("Starting " + getBaseName());
-
+        }
         // Send j2ee.state.starting notification
         // starting
         if (this.getObjectName() != null) {
@@ -5002,7 +4987,7 @@ public class StandardContext extends ContainerBase
                 setNamingContextListener(ncl);
             }
         }
-
+        // 标准容器启动
         // Standard container startup
         if (log.isDebugEnabled())
             log.debug("Processing standard container startup");
@@ -5072,7 +5057,9 @@ public class StandardContext extends ContainerBase
                 fireLifecycleEvent(Lifecycle.CONFIGURE_START_EVENT, null);
 
                 // Start our child containers, if not already started
-                for (Container child : findChildren()) {
+                Container[] children = findChildren();
+                for (Container child : children) {
+                    System.out.println(child);
                     if (!child.getState().isAvailable()) {
                         //Method method = this.getClass().getMethod();
                         //System.out.println(method.getName());

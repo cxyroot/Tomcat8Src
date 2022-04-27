@@ -46,10 +46,11 @@ import org.apache.juli.logging.LogFactory;
 import org.apache.tomcat.util.ExceptionUtils;
 
 /**
- * Standard implementation of the <b>Host</b> interface.  Each
- * child container must be a Context implementation to process the
+ * Standard implementation of the <b>Host</b> interface.
+ * Each child container must be a Context implementation to process the
  * requests directed to a particular web application.
  *
+ * 每个子容器必须是一个上下文实现，以处理指向特定web应用程序的请求。
  * @author Craig R. McClanahan
  * @author Remy Maucherat
  */
@@ -66,7 +67,9 @@ public class StandardHost extends ContainerBase implements Host {
     public StandardHost() {
 
         super();
-        pipeline.setBasic(new StandardHostValve());
+        System.out.println("org.apache.catalina.core.StandardHost.StandardHost");
+        StandardHostValve standardHostValve = new StandardHostValve();
+        pipeline.setBasic(standardHostValve);
 
     }
 

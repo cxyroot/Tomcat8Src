@@ -208,12 +208,14 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
     // ----------------------------------------------- Public Lifecycle Methods
 
     /**
+     * 初始化 这个  endpoint。
      * Initialize the endpoint.
      */
     @Override
     public void bind() throws Exception {
-
+        System.out.println("org.apache.tomcat.util.net.NioEndpoint.bind");
         if (!getUseInheritedChannel()) {
+            //ServerSocketChannel
             serverSock = ServerSocketChannel.open();
             socketProperties.setProperties(serverSock.socket());
             InetSocketAddress addr = (getAddress()!=null?new InetSocketAddress(getAddress(),getPort()):new InetSocketAddress(getPort()));
@@ -228,7 +230,7 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
                 throw new IllegalArgumentException(sm.getString("endpoint.init.bind.inherited"));
             }
         }
-        serverSock.configureBlocking(true); //mimic APR behavior
+        serverSock.configureBlocking(true); //mimic APR behavior  模仿APR
 
         // Initialize thread count defaults for acceptor, poller
         if (acceptorThreadCount == 0) {
@@ -242,8 +244,11 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
         setStopLatch(new CountDownLatch(pollerThreadCount));
 
         // Initialize SSL if needed
+        // 如果需要，初始化SSL
+        // 初始化 SSL 如果需要
         initialiseSsl();
-
+        System.err.println("org.apache.tomcat.util.net.NioEndpoint.bind:::::::selectorPool.open();");
+        System.err.println("org.apache.tomcat.util.net.NioSelectorPool===========");
         selectorPool.open();
     }
 

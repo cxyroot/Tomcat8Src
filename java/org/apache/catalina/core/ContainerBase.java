@@ -884,10 +884,12 @@ public abstract class ContainerBase extends LifecycleMBeanBase
 
     @Override
     protected void initInternal() throws LifecycleException {
+        System.out.println("org.apache.catalina.core.ContainerBase.initInternal");
         BlockingQueue<Runnable> startStopQueue = new LinkedBlockingQueue<>();
         startStopExecutor = new ThreadPoolExecutor(
                 getStartStopThreadsInternal(),
-                getStartStopThreadsInternal(), 10, TimeUnit.SECONDS,
+                getStartStopThreadsInternal(),
+                10, TimeUnit.SECONDS,
                 startStopQueue,
                 new StartStopThreadFactory(getName() + "-startStop-"));
         startStopExecutor.allowCoreThreadTimeOut(true);
@@ -925,6 +927,8 @@ public abstract class ContainerBase extends LifecycleMBeanBase
             //启动 StandardHost
             //启动 HostConfig
             //启动 StandardContext
+            //StandardEngine[Catalina].StandardHost[localhost].StandardContext[].StandardWrapper[default]
+            //StandardEngine[Catalina].StandardHost[localhost].StandardContext[].StandardWrapper[jsp]
             results.add(startStopExecutor.submit(new StartChild(children[i])));
         }
 
@@ -949,7 +953,7 @@ public abstract class ContainerBase extends LifecycleMBeanBase
 
         // Start the Valves in our pipeline (including the basic), if any
         if (pipeline instanceof Lifecycle) {
-            System.out.println(((Lifecycle) pipeline));
+            System.err.println(((Lifecycle) pipeline));
             //Pipeline[StandardEngine[Catalina].StandardHost[localhost].StandardContext[/docs].StandardWrapper[default]]
             ((Lifecycle) pipeline).start();
         }
