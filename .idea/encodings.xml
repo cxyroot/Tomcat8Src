@@ -3,6 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/java/org/apache/catalina/LifecycleState.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/java/org/apache/catalina/core/StandardServer.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/java/org/apache/catalina/startup/HostConfig.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/java/org/apache/catalina/util/LifecycleBase.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/tomcat问题.md" charset="GBK" />
   </component>
 </project>

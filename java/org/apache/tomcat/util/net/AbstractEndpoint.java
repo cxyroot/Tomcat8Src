@@ -1285,9 +1285,15 @@ public abstract class AbstractEndpoint<S> {
     }
 
     protected void countUpOrAwaitConnection() throws InterruptedException {
-        if (maxConnections==-1) return;
+        System.out.println("org.apache.tomcat.util.net.AbstractEndpoint.countUpOrAwaitConnection");
+        if (maxConnections==-1){
+            return;
+        }
+
         LimitLatch latch = connectionLimitLatch;
-        if (latch!=null) latch.countUpOrAwait();
+        if (latch!=null){
+            latch.countUpOrAwait();
+        }
     }
 
     protected long countDownConnection() {

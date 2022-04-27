@@ -418,13 +418,14 @@ public class HostConfig implements LifecycleListener {
     protected void deployApps() {
         System.out.println("org.apache.catalina.startup.HostConfig.deployApps()");
     	//注册webApp
+        System.out.println("注册WebApp");
         //host ==> StandardHost
         File appBase = host.getAppBaseFile();
         File configBase = host.getConfigBaseFile();
         String[] filteredAppPaths = filterAppPaths(appBase.list());
         // Deploy XML descriptors from configBase
-        //虚拟主机的部署，在Host容器下配置
-
+        // 虚拟主机的部署，在Host容器下配置
+        System.out.println("虚拟主机的部署，在Host容器下配置");
         //deployn部署模式问题。
         //Host节点下的Context
         deployDescriptors(configBase, configBase.list());
