@@ -489,6 +489,7 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
 
                     SocketChannel socket = null;
                     try {
+                        // 接受来自服务器的下一个传入连接
                         // Accept the next incoming connection from the server
                         // socket
                         System.out.println("serverSock.accept(),org.apache.tomcat.util.net.NioEndpoint.Acceptor.run");
