@@ -230,6 +230,8 @@ public class Http11Processor extends AbstractProcessor {
 
         super(endpoint);
 
+        System.out.println("org.apache.coyote.http11.Http11Processor.Http11Processor");
+
         httpParser = new HttpParser(relaxedPathChars, relaxedQueryChars);
 
         inputBuffer = new Http11InputBuffer(request, maxHttpHeaderSize, rejectIllegalHeaderName, httpParser);

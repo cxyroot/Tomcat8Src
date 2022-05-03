@@ -32,6 +32,7 @@ import javax.management.MBeanRegistrationException;
 import javax.management.MBeanServer;
 import javax.management.MalformedObjectNameException;
 import javax.management.ObjectName;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpUpgradeHandler;
 import javax.servlet.http.WebConnection;
 
@@ -712,6 +713,7 @@ public abstract class AbstractProtocol<S> implements ProtocolHandler,
 
         @Override
         public SocketState process(SocketWrapperBase<S> wrapper, SocketEvent status) {
+            System.out.println("org.apache.coyote.AbstractProtocol.ConnectionHandler.process");
             if (getLog().isDebugEnabled()) {
                 getLog().debug(sm.getString("abstractConnectionHandler.process",
                         wrapper.getSocket(), status));
