@@ -404,7 +404,7 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
             socket.configureBlocking(false);
             Socket sock = socket.socket();
             socketProperties.setProperties(sock);
-            System.out.println("SocketChannel==转化为=》NioChannel");
+            System.out.println("SocketChannel ===》NioChannel");
             NioChannel channel = nioChannels.pop();
             if (channel == null) {
                 SocketBufferHandler bufhandler = new SocketBufferHandler(
@@ -509,6 +509,7 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
                             break;
                         }
                     }
+                    System.out.println("Successful accept, reset the error delay");
                     // Successful accept, reset the error delay
                     errorDelay = 0;
 
@@ -695,8 +696,9 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
         private void addEvent(PollerEvent event) {
             System.out.println("org.apache.tomcat.util.net.NioEndpoint.Poller.addEvent");
             events.offer(event);
-            if ( wakeupCounter.incrementAndGet() == 0 )
-                    selector.wakeup();
+            if ( wakeupCounter.incrementAndGet() == 0 ) {
+                selector.wakeup();
+            }
         }
 
         /**

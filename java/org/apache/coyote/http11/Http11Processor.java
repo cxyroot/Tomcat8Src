@@ -661,6 +661,10 @@ public class Http11Processor extends AbstractProcessor {
     @Override
     public SocketState service(SocketWrapperBase<?> socketWrapper)
         throws IOException {
+
+
+        System.out.println("org.apache.coyote.http11.Http11Processor.service");
+
         RequestInfo rp = request.getRequestProcessor();
         rp.setStage(org.apache.coyote.Constants.STAGE_PARSE);
         // 设置 向上 这个 i/o
@@ -758,6 +762,7 @@ public class Http11Processor extends AbstractProcessor {
                         response.setHeader("Connection", "Upgrade");
                         response.setHeader("Upgrade", requestedProtocol);
                         action(ActionCode.CLOSE,  null);
+                        System.out.println("");
                         getAdapter().log(request, response, 0);
 
                         InternalHttpUpgradeHandler upgradeHandler =
