@@ -53,8 +53,8 @@ import org.xml.sax.SAXParseException;
 
 /**
  * 开启/关闭 这个程序都要通过 Catalina
- * Startup/Shutdown shell program for Catalina.  The following command line
- * options are recognized:
+ * Startup/Shutdown shell program for Catalina.
+ * The following command line  options are recognized:
  * <ul>
  * <li><b>-config {pathname}</b> - Set the pathname of the configuration file
  *     to be processed.  If a relative path is specified, it will be

@@ -345,6 +345,7 @@ public final class Bootstrap {
 
 
     /**
+     * 加载这个 Catalina 后台线程
      * Load the Catalina daemon.
      * @param arguments Initialization arguments
      * @throws Exception Fatal initialization error

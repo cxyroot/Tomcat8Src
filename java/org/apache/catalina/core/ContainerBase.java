@@ -396,6 +396,7 @@ public abstract class ContainerBase extends LifecycleMBeanBase
      */
     @Override
     public Cluster getCluster() {
+        //private final ReadWriteLock realmLock = new ReentrantReadWriteLock();
         Lock readLock = clusterLock.readLock();
         readLock.lock();
         try {

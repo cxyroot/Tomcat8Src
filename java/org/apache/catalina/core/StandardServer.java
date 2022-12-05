@@ -76,6 +76,8 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
 
         super();
 
+        System.out.println("org.apache.catalina.core.StandardServer.StandardServer");
+
         globalNamingResources = new NamingResourcesImpl();
         globalNamingResources.setContainer(this);
 

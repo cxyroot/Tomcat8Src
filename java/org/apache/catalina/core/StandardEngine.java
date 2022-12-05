@@ -65,6 +65,7 @@ public class StandardEngine extends ContainerBase implements Engine {
 
         super();
         System.out.println("org.apache.catalina.core.StandardEngine.StandardEngine");
+        System.out.println("org.apache.catalina.core.StandardEngineValve");
         pipeline.setBasic(new StandardEngineValve());
         /* Set the jmvRoute using the system property jvmRoute */
         try {
@@ -108,6 +109,11 @@ public class StandardEngine extends ContainerBase implements Engine {
         new AtomicReference<>();
 
     // ------------------------------------------------------------- Properties
+
+    @Override
+    public void setStartStopThreads(int startStopThreads) {
+        super.setStartStopThreads(startStopThreads);
+    }
 
     /**
      * Obtain the configured Realm and provide a default Realm implementation
