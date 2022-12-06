@@ -463,7 +463,7 @@ public final class Bootstrap {
     public void destroy() {
 
         // FIXME
-
+        // 已知的无法运行的代码
     }
 
 

@@ -826,7 +826,7 @@ public class StandardHost extends ContainerBase implements Host {
     @Override
     protected synchronized void startInternal() throws LifecycleException {
         System.out.println("org.apache.catalina.core.StandardHost.startInternal");
-        // Set error report valve
+        // Set error report valve 设置错误报告阀
         String errorValve = getErrorReportValveClass();
         if ((errorValve != null) && (!errorValve.equals(""))) {
             try {

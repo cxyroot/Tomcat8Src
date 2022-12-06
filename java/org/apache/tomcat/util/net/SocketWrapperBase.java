@@ -92,6 +92,7 @@ public abstract class SocketWrapperBase<E> {
     protected final WriteBuffer nonBlockingWriteBuffer = new WriteBuffer(bufferedWriteSize);
 
     public SocketWrapperBase(E socket, AbstractEndpoint<E> endpoint) {
+        System.out.println("org.apache.tomcat.util.net.SocketWrapperBase.SocketWrapperBase");
         this.socket = socket;
         this.endpoint = endpoint;
         ReentrantReadWriteLock lock = new ReentrantReadWriteLock();

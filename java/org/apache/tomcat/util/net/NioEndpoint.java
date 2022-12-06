@@ -857,10 +857,12 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
                             //do a non blocking select
                             keyCount = selector.selectNow();
                         } else {
+                            System.out.println("java.nio.channels.Selector.select(long)");
                             keyCount = selector.select(selectorTimeout);
                         }
                         wakeupCounter.set(0);
                     }
+                    System.out.println("org.apache.tomcat.util.net.NioEndpoint.Poller.selector+1");
                     if (close) {
                         System.out.println("caoxiaoyang!!!");
                         //System.out.println(close);
@@ -1541,6 +1543,7 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel> {
                     if (event == null) {
                         state = getHandler().process(socketWrapper, SocketEvent.OPEN_READ);
                     } else {
+                        System.out.println(socketWrapper.toString());
                         state = getHandler().process(socketWrapper, event);
                     }
                     if (state == SocketState.CLOSED) {

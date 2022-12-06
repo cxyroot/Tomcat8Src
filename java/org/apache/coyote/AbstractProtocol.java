@@ -581,7 +581,7 @@ public abstract class AbstractProtocol<S> implements ProtocolHandler,
         endpoint.setName(endpointName.substring(1, endpointName.length()-1));
         endpoint.setDomain(domain);
         System.out.println("org.apache.coyote.AbstractProtocol.init："+"endpoint初始化");
-        System.out.println("org.apache.coyote.AbstractProtocol.init："+endpoint);
+        System.out.println("org.apache.coyote.AbstractProtocol.init："+ endpoint);
         endpoint.init();
     }
 
@@ -1155,11 +1155,14 @@ public abstract class AbstractProtocol<S> implements ProtocolHandler,
         public void run() {
 
             // Loop until we receive a shutdown command
+            // 循环直到我们收到一个关闭命令
             while (asyncTimeoutRunning) {
+                System.out.println("org.apache.coyote.AbstractProtocol.AsyncTimeout.run");
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
-                    // Ignore
+                    // Ignore 不予理会
+                    e.printStackTrace();
                 }
                 long now = System.currentTimeMillis();
                 for (Processor processor : waitingProcessors) {
@@ -1172,6 +1175,7 @@ public abstract class AbstractProtocol<S> implements ProtocolHandler,
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         // Ignore
+                        e.printStackTrace();
                     }
                 }
             }

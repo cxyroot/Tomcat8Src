@@ -71,6 +71,8 @@ public class Connector extends LifecycleMBeanBase  {
     //重要
     public Connector(String protocol) {
 
+        System.out.println("org.apache.catalina.connector.Connector.Connector(java.lang.String)");
+
         setProtocol(protocol);
         // Instantiate protocol handler
         //ProtocolHandler 处理器
